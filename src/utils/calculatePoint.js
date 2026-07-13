@@ -4,6 +4,7 @@ export function calculateFinalPoint(basePoint, weatherValue) {
     normal: 1,
     rain_wind: 2,
     warning: 3,
+    sos: 5,
   }
   const multiplier = multiplierMap[weatherValue] ?? 1
   return basePoint * multiplier

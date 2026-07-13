@@ -142,7 +142,7 @@ function HomePage() {
       </div>
 
       <div className="mb-6 text-left">
-        <label className="text-sm text-gray-500 block mb-1">오늘 날씨</label>
+        <label className="text-sm text-gray-500 block mb-1">할증</label>
         <select
           value={weather}
           onChange={(e) => setWeather(e.target.value)}
