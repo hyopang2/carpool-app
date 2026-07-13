@@ -6,6 +6,7 @@ import { useUserStore } from './store/userStore'
 import LoginPage from './pages/LoginPage'
 import HomePage from './pages/HomePage'
 import ChatPage from './pages/ChatPage'
+import ProfilePage from './pages/ProfilePage'
 
 function App() {
   const [loading, setLoading] = useState(true)
@@ -48,6 +49,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/chat" element={<ChatPage />} />
         <Route path="*" element={<Navigate to="/" />} />
+        <Route path="/profile" element={<ProfilePage />} />
       </Routes>
     </BrowserRouter>
   )

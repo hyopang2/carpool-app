@@ -6,6 +6,7 @@ import { useUserStore } from '../store/userStore'
 import { MISSIONS, WEATHER_OPTIONS } from '../constants/missions'
 import { calculateFinalPoint } from '../utils/calculatePoint'
 import MissionCard from '../components/mission/MissionCard'
+import NoticeBoard from '../components/notice/NoticeBoard'
 
 function HomePage() {
   const user = useUserStore((state) => state.user)
@@ -124,6 +125,9 @@ function HomePage() {
       <div className="flex justify-between items-center mb-6">
         <p className="text-sm text-gray-500">{user.email}</p>
         <div className="flex gap-3">
+          <button onClick={() => navigate('/profile')} className="link-btn">
+  프로필
+</button>
           <button
             onClick={() => navigate('/chat')}
             className="text-sm text-purple-600 underline"
@@ -155,6 +159,8 @@ function HomePage() {
           ))}
         </select>
       </div>
+
+<NoticeBoard />
 
       <div className="flex flex-col gap-3">
         {MISSIONS.map((mission) => (
