@@ -7,15 +7,17 @@ function NoticeBoard() {
   const user = useUserStore((state) => state.user)
 
   const [myNotice, setMyNotice] = useState('')
+  const [myNoticeId, setMyNoticeId] = useState(null)
   const [notices, setNotices] = useState([])
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
+  const [deleting, setDeleting] = useState(false)
+
+  const today = new Date().toISOString().slice(0, 10)
 
   useEffect(() => {
     if (user) loadNotices()
   }, [user])
-
-  const today = new Date().toISOString().slice(0, 10)
 
   const loadNotices = async () => {
     setLoading(true)
@@ -29,7 +31,13 @@ function NoticeBoard() {
     if (data) {
       setNotices(data)
       const mine = data.find((n) => n.user_id === user.id)
-      if (mine) setMyNotice(mine.content)
+      if (mine) {
+        setMyNotice(mine.content)
+        setMyNoticeId(mine.id)
+      } else {
+        setMyNotice('')
+        setMyNoticeId(null)
+      }
     }
 
     setLoading(false)
@@ -61,9 +69,33 @@ function NoticeBoard() {
     setSaving(false)
   }
 
+  const handleDelete = async () => {
+    if (!myNoticeId) return
+    if (!confirm('공지를 삭제할까요?')) return
+
+    setDeleting(true)
+
+    const { error } = await supabase.from('notices').delete().eq('id', myNoticeId)
+
+    if (error) {
+      alert('삭제 실패: ' + error.message)
+      setDeleting(false)
+      return
+    }
+
+    setMyNotice('')
+    setMyNoticeId(null)
+    await loadNotices()
+    setDeleting(false)
+  }
+
+  const otherNotices = notices.filter((n) => n.user_id !== user.id)
+
   return (
     <div className="notice-board">
-      <p className="muted small block mb-1">오늘의 공지</p>
+      <p className="muted small block mb-1">
+        오늘의 공지 {myNoticeId ? '(수정하려면 입력 후 등록)' : ''}
+      </p>
 
       <form onSubmit={handleSave} className="flex gap-2 mb-3">
         <input
@@ -75,8 +107,19 @@ function NoticeBoard() {
           maxLength={60}
         />
         <button type="submit" disabled={saving} className="btn-primary">
-          {saving ? '저장 중...' : '등록'}
+          {saving ? '저장 중...' : myNoticeId ? '수정' : '등록'}
         </button>
+        {myNoticeId && (
+          <button
+            type="button"
+            onClick={handleDelete}
+            disabled={deleting}
+            className="link-btn muted"
+            style={{ flexShrink: 0 }}
+          >
+            삭제
+          </button>
+        )}
       </form>
 
       {loading ? (
@@ -85,7 +128,13 @@ function NoticeBoard() {
         <p className="muted small">오늘 등록된 공지가 없습니다</p>
       ) : (
         <div className="flex flex-col gap-2">
-          {notices.map((notice) => (
+          {myNoticeId && (
+            <div className="notice-item">
+              <span className="notice-name">나</span>
+              <span className="notice-content">{myNotice}</span>
+            </div>
+          )}
+          {otherNotices.map((notice) => (
             <div key={notice.id} className="notice-item">
               <span className="notice-name">{notice.profiles?.name ?? '알 수 없음'}</span>
               <span className="notice-content">{notice.content}</span>

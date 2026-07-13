@@ -1,7 +1,5 @@
 @import "tailwindcss";
-@import "tailwindcss";
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css');
-
 
 :root {
   --text: #6b6375;
@@ -16,7 +14,7 @@
   --shadow:
     rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
 
- --sans: 'Pretendard', system-ui, 'Segoe UI', Roboto, sans-serif;
+  --sans: 'Pretendard', system-ui, 'Segoe UI', Roboto, sans-serif;
   --heading: 'Pretendard', system-ui, 'Segoe UI', Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
 
@@ -115,6 +113,8 @@ code {
   background: var(--code-bg);
 }
 
+/* ===== 레이아웃 ===== */
+
 .page-container {
   max-width: 400px;
   margin: 0 auto;
@@ -156,6 +156,8 @@ code {
   color: var(--text);
 }
 
+/* ===== 포인트 카드 ===== */
+
 .point-card {
   text-align: center;
   padding: 28px 0;
@@ -173,6 +175,8 @@ code {
   margin-top: 4px;
 }
 
+/* ===== 폼 요소 ===== */
+
 .field-group {
   margin-bottom: 8px;
 }
@@ -185,6 +189,22 @@ code {
   background: var(--bg);
   color: var(--text-h);
   font-size: 14px;
+}
+
+.input-box {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text-h);
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.input-box:focus {
+  outline: none;
+  border-color: var(--accent-border);
 }
 
 .btn-primary {
@@ -207,6 +227,37 @@ code {
   opacity: 0.5;
   cursor: not-allowed;
 }
+
+.error-text {
+  color: #e5484d;
+  font-size: 13px;
+  text-align: center;
+}
+
+.switch-btn {
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 13px;
+  text-decoration: underline;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+  margin-top: 16px;
+  padding: 0;
+}
+
+/* ===== 인증 ===== */
+
+.auth-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-h);
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+/* ===== 미션 카드 ===== */
 
 .mission-card {
   display: flex;
@@ -235,58 +286,8 @@ code {
   margin-top: 2px;
 }
 
-.mt-4 { margin-top: 16px; }
-.mt-6 { margin-top: 24px; }
-.mb-1 { margin-bottom: 4px; }
-.block { display: block; }
-.flex { display: flex; }
-.gap-3 { gap: 12px; }
-.flex-col { flex-direction: column; }
+/* ===== 채팅 ===== */
 
-.auth-title {
-  font-size: 24px;
-  font-weight: 600;
-  color: var(--text-h);
-  text-align: center;
-  margin-bottom: 24px;
-}
-
-.input-box {
-  width: 100%;
-  padding: 10px 12px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--bg);
-  color: var(--text-h);
-  font-size: 14px;
-  box-sizing: border-box;
-}
-
-.input-box:focus {
-  outline: none;
-  border-color: var(--accent-border);
-}
-
-.error-text {
-  color: #e5484d;
-  font-size: 13px;
-  text-align: center;
-}
-
-.switch-btn {
-  background: none;
-  border: none;
-  color: var(--text);
-  font-size: 13px;
-  text-decoration: underline;
-  cursor: pointer;
-  width: 100%;
-  text-align: center;
-  margin-top: 16px;
-  padding: 0;
-}
-
-/* 채팅 */
 .chat-container {
   max-width: 400px;
   margin: 0 auto;
@@ -368,11 +369,24 @@ code {
   opacity: 0.9;
 }
 
-.gap-2 { gap: 8px; }
-.w-full { width: 100%; }
-.justify-between { justify-content: space-between; }
-.items-center { align-items: center; }
-.mb-4 { margin-bottom: 16px; }
+/* ===== 알림 뱃지 ===== */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border-radius: 999px;
+  background: #e5484d;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 600;
+  margin-left: 4px;
+}
+
+/* ===== 공지 ===== */
 
 .notice-board {
   margin: 20px 0;
@@ -403,3 +417,18 @@ code {
 .notice-content {
   color: var(--text-h);
 }
+
+/* ===== 유틸리티 ===== */
+
+.mt-4 { margin-top: 16px; }
+.mt-6 { margin-top: 24px; }
+.mb-1 { margin-bottom: 4px; }
+.mb-4 { margin-bottom: 16px; }
+.block { display: block; }
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.gap-2 { gap: 8px; }
+.gap-3 { gap: 12px; }
+.w-full { width: 100%; }
+.justify-between { justify-content: space-between; }
+.items-center { align-items: center; }
