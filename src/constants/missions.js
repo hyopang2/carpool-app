@@ -6,7 +6,7 @@ export const MISSIONS = [
 
 export const WEATHER_OPTIONS = [
   { value: 'normal', label: '맑음/보통', multiplier: 1 },
-  { value: 'rain_wind', label: '비/바람', multiplier: 2 },
-  { value: 'warning', label: '태풍/폭우 등 특보', multiplier: 3 },
+  { value: 'rain_wind', label: '비/바람', multiplier: 1.5 },
+  { value: 'warning', label: '태풍/폭우 등 특보', multiplier: 2 },
   { value: 'sos', label: '긴급 SOS', multiplier: 5 },
 ]
