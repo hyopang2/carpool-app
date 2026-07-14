@@ -100,7 +100,7 @@ function HomePage() {
   if (!user) {
     return (
       <div className="max-w-sm mx-auto mt-20 p-6 text-center">
-        <h1 className="text-2xl font-bold">운전만해</h1>
+        <h1 className="text-2xl font-bold">같이가U</h1>
         <p className="mt-4">로그인이 필요합니다</p>
         <button
           onClick={() => navigate('/login')}
