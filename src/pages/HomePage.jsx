@@ -7,6 +7,7 @@ import { MISSIONS, WEATHER_OPTIONS } from '../constants/missions'
 import { calculateFinalPoint } from '../utils/calculatePoint'
 import MissionCard from '../components/mission/MissionCard'
 import NoticeBoard from '../components/notice/NoticeBoard'
+import { getTodayDateString } from '../utils/dateUtils'
 
 function HomePage() {
   const user = useUserStore((state) => state.user)
@@ -37,7 +38,7 @@ function HomePage() {
       setTotalPoint(profile.total_point)
     }
 
-    const today = new Date().toISOString().slice(0, 10)
+    const today = getTodayDateString()
     const { data: logs } = await supabase
       .from('mission_logs')
       .select('mission_id')
@@ -60,7 +61,7 @@ function HomePage() {
     setProcessing(true)
 
     const earnedPoint = calculateFinalPoint(mission.basePoint, weather)
-    const today = new Date().toISOString().slice(0, 10)
+    const today = getTodayDateString()
 
     const { error: insertError } = await supabase.from('mission_logs').insert({
       user_id: user.id,

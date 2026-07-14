@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react'
 import { supabase } from '../../lib/supabaseClient'
 import { useUserStore } from '../../store/userStore'
+import { getTodayDateString } from '../../utils/dateUtils'
 
 function NoticeBoard() {
   const user = useUserStore((state) => state.user)
@@ -13,7 +14,7 @@ function NoticeBoard() {
   const [saving, setSaving] = useState(false)
   const [deleting, setDeleting] = useState(false)
 
-  const today = new Date().toISOString().slice(0, 10)
+  const today = getTodayDateString()
 
   useEffect(() => {
     if (user) loadNotices()
