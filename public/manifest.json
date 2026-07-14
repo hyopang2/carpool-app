@@ -1,6 +1,6 @@
 {
-  "name": "카풀 포인트 적립",
-  "short_name": "카풀포인트",
+  "name": "같이가U",
+  "short_name": "카풀 적립",
   "description": "카풀 미션을 완료하고 포인트를 적립하세요",
   "start_url": "/",
   "scope": "/",
@@ -9,10 +9,22 @@
   "theme_color": "#aa3bff",
   "icons": [
     {
-      "src": "/favicon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
       "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ]
 }
