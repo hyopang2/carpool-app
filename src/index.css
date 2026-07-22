@@ -432,3 +432,17 @@ code {
 .w-full { width: 100%; }
 .justify-between { justify-content: space-between; }
 .items-center { align-items: center; }
+
+.tip-box {
+  margin: 0 0 20px;
+}
+
+.tip-result {
+  text-align: center;
+  font-size: 14px;
+  padding: 10px;
+  border-radius: 8px;
+  background: var(--accent-bg);
+  color: var(--accent);
+  font-weight: 600;
+}
